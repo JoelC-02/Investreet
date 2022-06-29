@@ -3,6 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Navigate, useNavigate } from "react-router-dom";
 import { auth, db, logout } from "./firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
+import Swal from 'sweetalert2'
 import Footer from "./Footer.js"
 import Header from "./Header";
 import "./RegisterForm.css";
@@ -23,7 +24,10 @@ function RegisterForm() {
       setEmail(data.email);
     } catch (err) {
       console.error(err);
-      alert("An error occured while fetching user data");
+      Swal.fire({
+        icon: 'error',
+        title: 'An error occured while fetching user data'
+      })
     }
   };
   useEffect(() => {

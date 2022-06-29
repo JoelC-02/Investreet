@@ -1,4 +1,5 @@
 import React from "react";
+import Swal from 'sweetalert2'
 import "./SendRegisterForm.css";
 
 class SendRegisterForm extends React.Component {
@@ -80,7 +81,10 @@ class SendRegisterForm extends React.Component {
         })
         .catch((error) => {
           console.error('Error:', error);
-          alert("Kindly resubmit the form");
+          Swal.fire({
+            icon: 'error',
+            title: 'Kindly resubmit the form'
+          })
         });
     }
 

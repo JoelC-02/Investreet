@@ -6,6 +6,7 @@ import {
   registerWithEmailAndPassword,
   signInWithGoogle,
 } from "./firebase";
+import Swal from 'sweetalert2'
 import "./Register.css";
 import Footer from "./Footer.js"
 import Header from "./Header";
@@ -17,7 +18,10 @@ function Register() {
   const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
   const register = () => {
-    if (!name) alert("Please enter name");
+    if (!name) Swal.fire({
+        icon: 'warning',
+        title: 'Please enter name'
+      });
     registerWithEmailAndPassword(name, email, password);
   };
   useEffect(() => {

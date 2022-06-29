@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./Dashboard.css";
 import { auth, db, logout } from "./firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
+import Swal from 'sweetalert2'
 import Footer from "./Footer";
 import Header from "./Header";
 import FinanceChart from "./FinanceChart";
@@ -21,7 +22,10 @@ function Dashboard() {
       setName(data.name);
     } catch (err) {
       console.error(err);
-      alert("An error occured while fetching user data");
+      Swal.fire({
+        icon: 'error',
+        title: 'An error occured while fetching user data'
+      })
     }
   };
   useEffect(() => {

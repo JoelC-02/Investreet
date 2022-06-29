@@ -1,4 +1,5 @@
 import React from "react";
+import Swal from 'sweetalert2'
 
 class SendPersonalProfile extends React.Component {
     constructor(props){
@@ -36,11 +37,17 @@ class SendPersonalProfile extends React.Component {
         .then(response => response.text())
         .then(result => {
           console.log('Success:', result);
-          alert("Profile updated");
+          Swal.fire({
+            icon: 'success',
+            title: 'Profile Updated'
+          })
         })
         .catch((error) => {
           console.error('Error:', error);
-          alert("Update unsuccessful. Please try again");
+          Swal.fire({
+            icon: 'error',
+            title: 'Update unsuccessful. Please try again'
+          })
         });
     }
 

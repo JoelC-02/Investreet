@@ -1,4 +1,5 @@
 import React from "react";
+import Swal from 'sweetalert2'
 
 class SendFinanceProfile extends React.Component {
     constructor(props){
@@ -61,11 +62,17 @@ class SendFinanceProfile extends React.Component {
         .then(response => response.text())
         .then(result => {
           console.log('Success:', result);
-          alert("Profile updated");
+          Swal.fire({
+            icon: 'success',
+            title: 'Profile Updated'
+          })
         })
         .catch((error) => {
           console.error('Error:', error);
-          alert("Update unsuccessful. Please try again");
+          Swal.fire({
+            icon: 'error',
+            title: 'Update unsuccessful. Please try again'
+          })
         });
     }
 
@@ -123,7 +130,7 @@ class SendFinanceProfile extends React.Component {
                 <div className="form-group">
                     <label>Primary Source of Income</label>
                     <br />
-                    <input type="radio" className="form-check-input" name="Source" value="Salaried" onChange={this.handleChange}/>
+                    <input type="radio" className="form-check-input" name="Source" value="Salaried" onChange={this.handleChange} required/>
                     <label>Salaried</label>
                     <br />
                     <input type="radio" className="form-check-input" name="Source" value="Other" onChange={this.handleChange}/>

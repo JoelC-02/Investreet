@@ -18,7 +18,7 @@ function FinanceChart(props) {
         labels: ['Income', 'Expenditure', 'EMI', 'Equity additions', 'MF SIP', 'Crypto additions', 'Insurance'],
         datasets: [{
             label: 'Income/Expense Chart',
-            data: [chartdata.income, chartdata.expenditure, chartdata.emi, chartdata.equityadditions, chartdata.mfsip, chartdata.crypto, chartdata.insurance],
+            data: [chartdata.income, chartdata.expenditure, chartdata.emi, chartdata.equityadditions, chartdata.mfsip, chartdata.crypto, +(Math.round(chartdata.insurance/12 + "e+2")  + "e-2")],
             backgroundColor: [
                 'rgb(255, 99, 132)',
                 'rgb(75, 192, 192)',
@@ -129,7 +129,7 @@ function FinanceChart(props) {
                     <tr>
                     <th scope="row">7</th>
                     <td>Insurance</td>
-                    <td>{chartdata.insurance}</td>
+                    <td>{+(Math.round(chartdata.insurance/12 + "e+2")  + "e-2")}</td>
                     </tr>
                 </tbody>
                 </table>

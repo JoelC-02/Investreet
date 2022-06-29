@@ -3,6 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { auth, db, logout } from "./firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
+import Swal from 'sweetalert2'
 import Footer from "./Footer";
 import Header from "./Header";
 import "./PersonalProfile.css";
@@ -21,7 +22,10 @@ function PersonalProfile() {
       setName(data.name);
     } catch (err) {
       console.error(err);
-      alert("An error occured while fetching user data");
+      Swal.fire({
+        icon: 'error',
+        title: 'An error occured while fetching user data'
+      })
     }
   };
   useEffect(() => {
