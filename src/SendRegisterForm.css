@@ -1,0 +1,15 @@
+#submit_job input[type="text"], #submit_job input[type="number"], #submit_job input[type="email"], #submit_job input[type="tel"] {
+    background: transparent;
+    color: white;
+    border-width: 0 0 2px;
+    border-color: lightblue;
+    border-radius: 0;
+}
+
+#submit_job input[type="text"]:focus, #submit_job input[type="number"]:focus, #submit_job input[type="email"]:focus, #submit_job input[type="tel"]:focus {
+    background: transparent;
+    color: white;
+    border-width: 0 0 2px;
+    border-color: blue;
+    border-radius: 10px;
+}

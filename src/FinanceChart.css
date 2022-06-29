@@ -1,0 +1,23 @@
+.maindiv {
+    min-height: calc(100vh - 108px);
+}
+
+.chart {
+    width: 40%;
+    border: 1px;
+    padding-top: 20px;
+    margin: auto;
+}
+
+h3 {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.table-responsive {
+    margin-bottom: 20px;
+}
+
+table {
+    margin: 20px;
+}

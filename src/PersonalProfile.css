@@ -1,0 +1,66 @@
+.content {
+    min-height: 100vh;
+}
+
+.personalprofile  {
+    width: 90%;
+    text-align: left;
+}
+
+.form-group {
+    padding: 5px;
+}
+
+.sideicon {
+    margin-left: 10px;
+}
+
+.btn {
+    margin-top: 10px;
+}
+
+.profile-pic {
+    color: transparent;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.profile-pic input {
+    display: none;
+}
+
+.profile-pic img {
+    position: absolute;
+    object-fit: cover;
+    width: 165px;
+    height: 165px;
+    z-index: 0;
+}
+
+.profile-pic .-label {
+    cursor: pointer;
+    height: 165px;
+    width: 165px;
+}
+
+.profile-pic:hover .-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 10000;
+    color: #fafafa;
+    transition: background-color 0.2s ease-in-out;
+    border-radius: 100px;
+    margin-bottom: 0;
+}
+
+.profile-pic span {
+    display: inline-flex;
+    padding: 0.2em;
+    height: 2em;
+}
