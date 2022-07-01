@@ -7,6 +7,9 @@ import {
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
   signOut,
+  updatePassword,
+  reauthenticateWithCredential,
+  EmailAuthProvider
 } from "firebase/auth";
 import {
   getFirestore,
@@ -85,6 +88,17 @@ const firebaseConfig = {
   const logout = () => {
     signOut(auth);
   };
+  const resetPassword = async (currPassword, newPassword) => {
+    try {
+      const user = auth.currentUser;
+      const credential = EmailAuthProvider.credential(user.email, currPassword);
+      await reauthenticateWithCredential(user, credential);
+      await updatePassword(user, newPassword);
+    } catch (err) {
+      console.error(err);
+      alert(err.message);
+    }
+  };
   export {
     auth,
     db,
@@ -93,5 +107,6 @@ const firebaseConfig = {
     registerWithEmailAndPassword,
     sendPasswordReset,
     logout,
+    resetPassword
   };
   

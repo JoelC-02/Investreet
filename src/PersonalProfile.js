@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
-import { auth, db, logout } from "./firebase";
+import { auth, db, resetPassword } from "./firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
 import Swal from 'sweetalert2'
 import Footer from "./Footer";
@@ -60,6 +60,18 @@ function PersonalProfile() {
     })
   };
 
+  function checkPass() {
+    const currpass = document.querySelector('input[name=currpass]');
+    const password = document.querySelector('input[name=password]');
+    const confirm = document.querySelector('input[name=confirm]');
+    if (confirm.value === password.value) {
+        confirm.setCustomValidity('');
+        resetPassword(currpass.value, confirm.value);
+    } else {
+        confirm.setCustomValidity('Passwords do not match');
+    }
+  }
+
 
   return (
     <div className="content bg-dark">
@@ -113,7 +125,7 @@ function PersonalProfile() {
                         <div className="col-md-6">
                             <div className="form-group">
                                 <label>Old password</label>
-                                <input type="password" className="form-control" />
+                                <input name="currpass" type="password" className="form-control" />
                             </div>
                         </div>
                     </div>
@@ -121,18 +133,18 @@ function PersonalProfile() {
                         <div className="col-md-6">
                             <div className="form-group">
                                 <label>New password</label>
-                                <input type="password" className="form-control" />
+                                <input name="password" type="password" className="form-control"/>
                             </div>
                         </div>
                         <div className="col-md-6">
                             <div className="form-group">
                                 <label>Confirm new password</label>
-                                <input type="password" className="form-control" />
+                                <input name="confirm" type="password" className="form-control"/>
                             </div>
                         </div>
                     </div>
                     <div className="text-center">
-                        <button className="btn btn-primary">Update</button>
+                        <button className="btn btn-primary" onClick={checkPass}>Update</button>
                     </div>
                 </div>
             </div>
