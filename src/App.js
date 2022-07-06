@@ -7,6 +7,7 @@ import Dashboard from "./Dashboard";
 import RegisterForm from './RegisterForm';
 import FinanceProfile from './FinanceProfile';
 import PersonalProfile from './PersonalProfile';
+import FinanceHoldings from './FinanceHoldings';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route exact path="/registerform" element={<RegisterForm />} />
           <Route exact path="/financeprofile" element={<FinanceProfile />} />
           <Route exact path="/personalprofile" element={<PersonalProfile />} />
+          <Route exact path="/financeholdings" element={<FinanceHoldings />} />
         </Routes>
       </Router>
     </div>

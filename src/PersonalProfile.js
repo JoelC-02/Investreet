@@ -97,7 +97,7 @@ function PersonalProfile() {
                     <input id="file" type="file" onChange={loadFile}/>
                     <img src={profiledata.profileimage} id="output" alt="profileimage" className="shadow rounded-circle"/>
                     </div>
-                    <h2 className="text-center">{name}</h2>
+                    <h2 className="text-center">{profiledata.name}</h2>
                 </div>
                 <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <a className="nav-link active show" id="account-tab" data-bs-toggle="tab" data-bs-target="#account" data-toggle="pill" href="#account" role="tab" aria-controls="account" aria-selected="true">
@@ -144,7 +144,7 @@ function PersonalProfile() {
                         </div>
                     </div>
                     <div className="text-center">
-                        <button className="btn btn-primary" onClick={checkPass}>Update</button>
+                        <button className="btn btn-primary prsnlprofbtn" onClick={checkPass}>Update</button>
                     </div>
                 </div>
             </div>

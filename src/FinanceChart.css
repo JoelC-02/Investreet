@@ -1,11 +1,17 @@
 .maindiv {
     min-height: calc(100vh - 108px);
+    padding-top: 20px;
 }
 
 .chart {
     width: 40%;
     border: 1px;
-    padding-top: 20px;
+    margin: auto;
+}
+
+.smchart {
+    width: 60%;
+    border: 1px;
     margin: auto;
 }
 
@@ -14,10 +20,6 @@ h3 {
     padding-bottom: 0;
 }
 
-.table-responsive {
-    margin-bottom: 20px;
-}
-
-table {
-    margin: 20px;
+.tbl {
+    margin: auto;
 }

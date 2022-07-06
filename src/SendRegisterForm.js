@@ -95,7 +95,7 @@ class SendRegisterForm extends React.Component {
     render() {
       return (
         <form className="content text-start" id="submit_job" autoComplete="on" onSubmit={this.handleSubmit}>
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
             <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Client Details</button>
           </li>
