@@ -69,6 +69,21 @@ function FinanceHoldings() {
       .then(setData)
   }, [user, user?.email]);
 
+  useEffect(() => {
+      showHide();
+  }, [data]);
+
+  function showHide() {
+    var div = document.getElementById("hidden_div");
+    if (data[0] === undefined) {
+      div.style.display = 'none';
+    } else {
+      div.style.display = '';
+    }
+  }
+
+  var sume=0, sumd=0, sumc=0;
+
   return (
     <div className="dashboard">
     <Header loggedin={true} name={name}/>
@@ -114,8 +129,7 @@ function FinanceHoldings() {
           <input name="filedata" type="file" class="file" data-preview-file-type="text" data-show-upload="true" data-drop-zone-enabled="false" data-max-file-count="1"  data-msg-placeholder="Select PDF file for upload" data-allowed-file-extensions='["pdf"]' data-browse-label="Browse" data-browse-class="btn btn-outline-primary" data-remove-class="btn btn-outline-danger" data-upload-class="btn btn-outline-success" data-preview-class="bg-light" onChange={loadFile}/>
         </div>
       </form>
-      {data? (
-      <div style={{paddingTop: "30px", width: "80%", margin: "auto"}}>
+      <div style={{paddingTop: "30px", paddingBottom: "30px", width: "80%", margin: "auto"}} id="hidden_div">
         <h3>Equity</h3>
         <table class="table table-hover table-striped col">
         <thead>
@@ -128,17 +142,24 @@ function FinanceHoldings() {
         <tbody>
         {
           data.map((element) => {
-              if(element.type === 'Equity')
-              return (
-                <tr>
-                <td scope="row">{element.fundname}</td>
-                <td scope="row">{element.holding}</td>
-                <td scope="row">{element.value}</td>
-                </tr>
-              );
+              if(element.type === 'Equity') {
+                sume = sume + element.value/1;
+                return (
+                  <tr>
+                  <td scope="row">{element.fundname}</td>
+                  <td scope="row">{element.holding}</td>
+                  <td scope="row">{element.value}</td>
+                  </tr>
+                );
+            }
           })
         }
         </tbody>
+        <thead style={{"background-color": "lightgrey"}}>
+        <th scope="row"></th>
+        <th scope="row">Equity Total</th>
+        <th scope="row">{sume}</th>
+        </thead>
         </table>
         <h3>Debt</h3>
         <table class="table table-hover table-striped col">
@@ -152,17 +173,24 @@ function FinanceHoldings() {
         <tbody>
         {
           data.map((element) => {
-              if(element.type === 'Debt')
-              return (
-                <tr>
-                <td scope="row">{element.fundname}</td>
-                <td scope="row">{element.holding}</td>
-                <td scope="row">{element.value}</td>
-                </tr>
-              );
+              if(element.type === 'Debt') {
+                sumd = sumd + element.value/1;
+                return (
+                  <tr>
+                  <td scope="row">{element.fundname}</td>
+                  <td scope="row">{element.holding}</td>
+                  <td scope="row">{element.value}</td>
+                  </tr>
+                );
+              }
           })
         }
         </tbody>
+        <thead style={{"background-color": "lightgrey"}}>
+        <th scope="row"></th>
+        <th scope="row">Debt Total</th>
+        <th scope="row">{sumd}</th>
+        </thead>
         </table>
         <h3>Cash</h3>
         <table class="table table-hover table-striped col">
@@ -176,20 +204,27 @@ function FinanceHoldings() {
         <tbody>
         {
           data.map((element) => {
-              if(element.type === 'Cash')
-              return (
-                <tr>
-                <td scope="row">{element.fundname}</td>
-                <td scope="row">{element.holding}</td>
-                <td scope="row">{element.value}</td>
-                </tr>
-              );
+              if(element.type === 'Cash') {
+                sumc = sumc + element.value/1;
+                return (
+                  <tr>
+                  <td scope="row">{element.fundname}</td>
+                  <td scope="row">{element.holding}</td>
+                  <td scope="row">{element.value}</td>
+                  </tr>
+                );
+              }
           })
         }
         </tbody>
+        <thead style={{"background-color": "lightgrey"}}>
+        <th scope="row"></th>
+        <th scope="row">Cash Total</th>
+        <th scope="row">{sumc}</th>
+        </thead>
         </table>
+        <h3>Total Portfolio: ₹ {sume + sumd + sumc}</h3>
       </div> 
-      ) : "Loading"}
   </div>
   </div>
   <Footer />

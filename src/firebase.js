@@ -20,6 +20,8 @@ import {
   addDoc,
 } from "firebase/firestore";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+import Swal from 'sweetalert2'
+
 const firebaseConfig = {
     apiKey: "AIzaSyAi0BRlW4HPqp_Ey_nmTk6Jjmd1d0v4uBY",
     authDomain: "investreet-c44d4.firebaseapp.com",
@@ -48,17 +50,31 @@ const firebaseConfig = {
           email: user.email,
         });
       }
+      Swal.fire({
+        icon: 'success',
+        title: 'Signed in successfully'
+      })
     } catch (err) {
       console.error(err);
-      alert(err.message);
+      Swal.fire({
+        icon: 'error',
+        title: err.message
+      })
     }
   };
   const logInWithEmailAndPassword = async (email, password) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      Swal.fire({
+        icon: 'success',
+        title: 'Logged in successfully'
+      })
     } catch (err) {
       console.error(err);
-      alert(err.message);
+      Swal.fire({
+        icon: 'error',
+        title: err.message
+      })
     }
   };
   const registerWithEmailAndPassword = async (name, email, password) => {
@@ -71,18 +87,31 @@ const firebaseConfig = {
         authProvider: "local",
         email,
       });
+      Swal.fire({
+        icon: 'success',
+        title: 'Registered successfully'
+      })
     } catch (err) {
       console.error(err);
-      alert(err.message);
+      Swal.fire({
+        icon: 'error',
+        title: err.message
+      })
     }
   };
   const sendPasswordReset = async (email) => {
     try {
       await sendPasswordResetEmail(auth, email);
-      alert("Password reset link sent!");
+      Swal.fire({
+        icon: 'info',
+        title: 'Password reset link sent!'
+      })
     } catch (err) {
       console.error(err);
-      alert(err.message);
+      Swal.fire({
+        icon: 'error',
+        title: err.message
+      })
     }
   };
   const logout = () => {
@@ -94,9 +123,16 @@ const firebaseConfig = {
       const credential = EmailAuthProvider.credential(user.email, currPassword);
       await reauthenticateWithCredential(user, credential);
       await updatePassword(user, newPassword);
+      Swal.fire({
+        icon: 'success',
+        title: "Password reset successfully"
+      })
     } catch (err) {
       console.error(err);
-      alert(err.message);
+      Swal.fire({
+        icon: 'error',
+        title: err.message
+      })
     }
   };
   export {
